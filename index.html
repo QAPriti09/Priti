@@ -1,319 +1,319 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-user-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pritinanda Behera | Senior QA Automation Engineer</title>
+    <title>Pritinanda Behera | Senior QA Engineer Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 </head>
 <body>
 
-    <div id="glow-bg"></div>
-
     <div id="progress"></div>
+    <div id="glow-bg"></div>
+    <button id="backToTop" title="Go to top">↑</button>
 
-    <nav class="navbar glass-panel">
-        <div class="logo">PB<span>.</span></div>
-
-        <div class="menu-toggle" aria-label="Toggle navigation menu" role="button" aria-expanded="false">
+    <header class="navbar glass-panel">
+        <a href="#" class="logo">Pritinanda<span>.</span></a>
+        <div class="menu-toggle" id="mobile-menu">
             <span></span>
             <span></span>
             <span></span>
         </div>
-
         <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#skills">Skills & Tech</a></li>
-            <li><a href="#automation-suite">Automation Suite</a></li>
+            <li><a href="#hero" class="active">Home</a></li>
+            <li><a href="#skills">Skills</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
-        
         <div class="nav-controls-right">
             <div class="theme-switch-container">
-                <button class="theme-btn" id="themeToggleBtn" aria-label="Change Theme">🎨 Theme</button>
+                <button class="theme-btn" id="themeBtn">Theme</button>
                 <div class="theme-dropdown glass-panel" id="themeDropdown">
-                    <button data-theme="dark">🌑 Dark Core</button>
-                    <button data-theme="light">☀️ Clean Light</button>
-                    <button data-theme="cyberpunk">⚡ Cyberpunk</button>
+                    <button data-theme="dark">Dark Slate</button>
+                    <button data-theme="light">Light Minimal</button>
+                    <button data-theme="cyberpunk">Cyberpunk</button>
                 </div>
             </div>
             <a href="#contact" class="btn-hire">Hire Me</a>
         </div>
-    </nav>
+    </header>
 
-    <section id="home" class="hero">
-        <div class="hero-text">
-            <div class="status-badge glass-panel">🟢 Open to Opportunities</div>
-            
-            <div class="main-headline-container">
-                <h1 class="static-hi">Hi, I'm</h1>
-                <div class="typing-wrapper">
-                    <span id="typing"></span>
+    <section id="hero">
+        <div class="hero">
+            <div class="hero-text">
+                <div class="status-badge glass-panel">🟢 Available for Strategic Automation Roles</div>
+                <div class="main-headline-container">
+                    <h1 class="static-hi">Hi, I'm Pritinanda</h1>
+                    <div class="typing-wrapper">
+                        <span id="typing"></span>
+                    </div>
+                </div>
+                <p class="tagline">
+                    <strong>Senior QA Engineer</strong> with 6+ years of specialized experience in Automation and Manual Testing across Web, Mobile, and API applications. Expertise spans enterprise ecosystems like ERP, Healthcare, CRM, E-Commerce, Finance, and Sales domains.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-box glass-panel"><span>6+ Yrs</span>Experience</div>
+                    <div class="stat-box glass-panel"><span>80%</span>ERP Automated</div>
+                    <div class="stat-box glass-panel"><span>-40%</span>Regression Cycle</div>
                 </div>
             </div>
-            
-            <p class="tagline">
-                <strong>Senior QA Engineer</strong> at Accenture, specializing in designing scalable test automation frameworks, accelerating CI/CD pipelines, and shifting quality engineering left.
-            </p>
-            
-            <div class="hero-stats">
-                <div class="stat-box glass-panel"><span>6+</span> Years Exp</div>
-                <div class="stat-box glass-panel"><span>Web & Mobile</span> Testing</div>
-                <div class="stat-box glass-panel"><span>pom</span> Expert</div>
-            </div>
-        </div>
-        <div class="hero-image">
-            <div class="image-frame-wrapper">
-                <img src="images/profile.png" alt="Pritinanda Behera" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400'" loading="eager">
+            <div class="hero-image">
+                <div class="image-frame-wrapper">
+                    <img src="profile.jpg" alt="Pritinanda Behera Professional Headshot">
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="skills" class="skills-section">
+    <section id="skills">
         <div class="section-title">
-            <span>What I Know</span>
-            <h2>Skills & <span>Tech Stack</span></h2>
+            <span>Technical Capabilities</span>
+            <h2>My Automation Stack Matrix</h2>
         </div>
-        
         <div class="skills-filter">
-            <button class="filter-btn active glass-panel" data-category="all">All Tech</button>
-            <button class="filter-btn glass-panel" data-category="automation">Automation</button>
-            <button class="filter-btn glass-panel" data-category="languages">Languages</button>
-            <button class="filter-btn glass-panel" data-category="devops">DevOps & Tracking</button>
+            <button class="filter-btn active" data-filter="all">All Ecosystems</button>
+            <button class="filter-btn" data-filter="automation">Automation Frameworks</button>
+            <button class="filter-btn" data-filter="api">API & Database</button>
+            <button class="filter-btn" data-filter="devops">CI/CD & Management</button>
         </div>
-        
         <div class="skills-grid">
-            <div class="skill-card glass-panel" data-cat="automation">
-                <h3><span>⚙️</span> Automation & Frameworks</h3>
-                <p>Selenium WebDriver · Appium · REST Assured · TestNG · Cucumber BDD</p>
+            <div class="skill-card glass-panel" data-category="automation">
+                <h3>UI Automation Core</h3>
+                <p>Selenium WebDriver (Java), Playwright (TypeScript), Cucumber BDD, and TestNG modular architectures.</p>
                 <div class="progress-wrapper">
-                    <div class="progress-info"><span>Test Automation</span><span>95%</span></div>
-                    <div class="progress-bar"><div class="progress-fill" style="width: 95%;"></div></div>
+                    <div class="progress-info"><span>Proficiency</span><span>95%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 95%"></div></div>
                 </div>
             </div>
-
-            <div class="skill-card glass-panel" data-cat="languages">
-                <h3><span>💻</span> Languages & Design</h3>
-                <p>Java · JavaScript · Page Object Model (POM) · Modular Architectures</p>
+            <div class="skill-card glass-panel" data-category="automation">
+                <h3>Mobile Ecosystems</h3>
+                <p>Native & hybrid mobile automation across Android and iOS platforms utilizing Appium and Browser Stack.</p>
                 <div class="progress-wrapper">
-                    <div class="progress-info"><span>Java / Scripting</span><span>85%</span></div>
-                    <div class="progress-bar"><div class="progress-fill" style="width: 85%;"></div></div>
+                    <div class="progress-info"><span>Proficiency</span><span>92%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 92%"></div></div>
                 </div>
             </div>
-
-            <div class="skill-card glass-panel" data-cat="devops">
-                <h3><span>📊</span> CI/CD & Reporting Solutions</h3>
-                <p>Jenkins · Git / GitHub · Allure Reports · Extent Reports · Maven</p>
+            <div class="skill-card glass-panel" data-category="api">
+                <h3>API & Database Verification</h3>
+                <p>REST Assured automation, Postman, Swagger, JSON structural assertions, and relational SQL queries.</p>
                 <div class="progress-wrapper">
-                    <div class="progress-info"><span>CI/CD & Reporting</span><span>90%</span></div>
-                    <div class="progress-bar"><div class="progress-fill" style="width: 90%;"></div></div>
+                    <div class="progress-info"><span>Proficiency</span><span>90%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 90%"></div></div>
+                </div>
+            </div>
+            <div class="skill-card glass-panel" data-category="devops">
+                <h3>CI/CD Pipelines & DevOps</h3>
+                <p>Continuous testing integration via Jenkins, Git lifecycle coordination, Maven profiles, and parallel suites.</p>
+                <div class="progress-wrapper">
+                    <div class="progress-info"><span>Proficiency</span><span>88%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 88%"></div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="automation-suite" class="simulator-section">
+    <section id="sandbox">
         <div class="section-title">
-            <span>Interactive Portfolio Demo</span>
-            <h2>Live Test Automation <span>Suite Executions</span></h2>
+            <span>Interactive Validation</span>
+            <h2>Test Simulation Terminal</h2>
         </div>
-
         <div class="terminal-container glass-panel">
             <div class="terminal-header">
-                <div class="terminal-dots">
-                    <span class="dot red"></span>
-                    <span class="dot yellow"></span>
-                    <span class="dot green"></span>
-                </div>
-                <div class="terminal-title">priti-qa-framework // regression-execution-matrix</div>
+                <div class="terminal-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
+                <div class="terminal-title">pritinanda@qa-engine ~ bash run_suite.sh</div>
             </div>
-            <div class="terminal-body" id="terminalConsole">
-                <p class="system-line">[INFO] Ready to spin up framework regression engine components...</p>
-                <p class="system-line">[INFO] Click 'Trigger Framework Verification' below to run client-specific suite checks.</p>
+            <div class="terminal-body" id="consoleBody">
+                <p class="system-line">[INFO] Engine connection initialized successfully.</p>
+                <p class="system-line">[INFO] Click the action driver button below to run the verified test suite pipelines.</p>
             </div>
             <div class="terminal-footer">
-                <button id="runTestsBtn" class="btn-terminal">⚡ Trigger Framework Verification</button>
-                <div class="live-metrics" id="liveMetrics">
-                    <span>Passed: <strong id="metricPass" style="color:#2ea44f;">0</strong></span>
-                    <span>Failed: <strong id="metricFail" style="color:#f778ba;">0</strong></span>
-                    <span>Status: <strong id="metricStatus" style="color:var(--text-secondary);">IDLE</strong></span>
+                <button class="btn-terminal" id="runTestBtn">Execute Automation Suite</button>
+                <div class="live-metrics">
+                    <div>Status: <span id="suiteStatus" style="color:#ffffff;">IDLE</span></div>
+                    <div>Success Rate: <span id="successRate" style="color:#ffffff;">--</span></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="experience" class="experience-section">
+    <section id="experience">
         <div class="section-title">
-            <span>My Journey</span>
-            <h2>Work <span>Experience</span></h2>
+            <span>Professional Milestones</span>
+            <h2>Career Engineering Path</h2>
         </div>
-
-        <div class="timeline">
+        <div class="timeline-container" style="display: flex; flex-direction: column; gap: 30px;">
+            
             <div class="timeline-item glass-panel">
                 <div class="timeline-header">
-                    <h3>Senior Quality Assurance Engineer</h3>
-                    <span class="timeline-date">LanceSoft India (Client: Accenture) | Jan 2025 - Present</span>
+                    <h3>Senior QA Engineer</h3>
+                    <span class="timeline-date">Xmplar Management Solutions | Jan 2025 - Present</span>
                 </div>
                 <ul>
-                    <li>Directing automation framework engineering and test design alignment across enterprise-scale application infrastructure for Accenture.</li>
-                    <li>Scaling cross-functional automation scripts, optimizing thread-safe configurations to support large-scale parallel regression pipelines via Jenkins with automated reporting.</li>
-                    <li>Driving defect triage, pipeline diagnostics via CI/CD networks, and optimizing backend programmatic interfaces to reduce validation bottlenecks.</li>
-                    <li>Performed API, UI, and database validation for transaction-level accuracy.</li>
-                    <li>Supported UAT validation, production release verification, and defect triage processes.</li>
-                </ul>
-                <div class="tech-badges">
-                    <span class="glass-panel">Java</span><span class="glass-panel">Selenium WebDriver</span><span class="glass-panel">REST Assured</span><span class="glass-panel">CI/CD</span><span class="glass-panel">Accenture Ecosystem</span>
-                </div>
-            </div>
-
-            <div class="timeline-item glass-panel" style="margin-top: 30px;">
-                <div class="timeline-header">
-                    <h3>Senior Quality Assurance Engineer</h3>
-                    <span class="timeline-date">Xmplar Management Solutions | Jan 2024 - Jan 2025</span>
-                </div>
-                <ul>
-                    <li>Led end-to-end QA strategy for enterprise ERP Web and Mobile (Android/iOS) applications across Sales, Finance, HRMS, CRM, and Manufacturing modules.</li>
-                    <li>Architected thread-safe Selenium (Java) + Cucumber BDD automation suites leveraging parallel execution via TestNG using a modular POM design.</li>
-                    <li>Designed and integrated REST Assured API automation with token-based authentication and deep API+UI end-to-end cross-validations.</li>
-                    <li>Implemented robust self-healing framework strategies, improving overall test script execution stability by 30%.</li>
+                    <li>Leading end-to-end QA strategy for ERP Web and Mobile (Android/iOS) applications across Sales, Finance, HRMS, CRM, and Manufacturing modules.</li>
+                    <li>Architected Selenium (Java) + Cucumber BDD automation framework using modular POM design with parallel execution via TestNG.</li>
+                    <li>Designed and integrated REST Assured API automation with token-based authentication and end-to-end API+UI validation.</li>
+                    <li>Implemented self-healing automation, improving test stability by 30% and reducing maintenance effort.</li>
                     <li>Reduced regression cycle time by 40% through CI/CD integration using Jenkins and Git.</li>
+                    <li>Led UAT coordination, defect triage, sprint activities, and production release signoffs with client stakeholders.</li>
                 </ul>
                 <div class="tech-badges">
-                    <span class="glass-panel">Java</span><span class="glass-panel">Selenium</span><span class="glass-panel">Appium</span><span class="glass-panel">Cucumber BDD</span><span class="glass-panel">REST Assured</span><span class="glass-panel">Jenkins</span>
+                    <span class="glass-panel">Selenium Java</span>
+                    <span class="glass-panel">Cucumber BDD</span>
+                    <span class="glass-panel">REST Assured</span>
+                    <span class="glass-panel">Self-Healing</span>
+                    <span class="glass-panel">Jenkins CI/CD</span>
                 </div>
             </div>
 
-            <div class="timeline-item glass-panel" style="margin-top: 30px;">
+            <div class="timeline-item glass-panel">
+                <div class="timeline-header">
+                    <h3>Senior QA Engineer</h3>
+                    <span class="timeline-date">Tata Consultancy Services | Dec 2021 - Jan 2023</span>
+                </div>
+                <ul>
+                    <li>Worked on mission-critical Healthcare mobile and web applications for global enterprise clients.</li>
+                    <li>Automated target Android & iOS test cases natively utilizing Appium.</li>
+                    <li>Executed strict regression, sanity, and functional validation matrices across production releases.</li>
+                    <li>Conducted multi-view cross-browser and real device cloud verification using Browser Stack.</li>
+                    <li>Actively participated in core agile sprint planning, defect triage boards, and QA reviews.</li>
+                </ul>
+                <div class="tech-badges">
+                    <span class="glass-panel">Appium</span>
+                    <span class="glass-panel">Healthcare QA</span>
+                    <span class="glass-panel">Browser Stack</span>
+                    <span class="glass-panel">Android & iOS</span>
+                    <span class="glass-panel">JIRA</span>
+                </div>
+            </div>
+
+            <div class="timeline-item glass-panel">
                 <div class="timeline-header">
                     <h3>QA Engineer</h3>
                     <span class="timeline-date">Web Skitters Technologies Pvt. Ltd. | Oct 2021 - Dec 2021</span>
                 </div>
                 <ul>
-                    <li>Performed Functional, Integration, and Regression Testing for complex web and mobile software implementations.</li>
-                    <li>Developed and scaled automated test scripts utilizing Selenium WebDriver backed by the TestNG framework ecosystem.</li>
-                    <li>Validated cross-browser compatibility across Chrome, Firefox, and Edge configurations to ensure unified UI performance.</li>
-                    <li>Prepared comprehensive test cases, executed critical test scenarios, and efficiently logged and tracked defects inside JIRA.</li>
+                    <li>Performed thorough Functional, Integration, and Regression testing across cross-platform applications.</li>
+                    <li>Developed automated scripts backed by Selenium WebDriver and the TestNG assertion runner.</li>
+                    <li>Validated exact cross-browser system compatibility blueprints using Chrome, Firefox, and Edge platforms.</li>
+                    <li>Drafted clear test case documents, executed specialized user scenarios, and managed issue logging in JIRA.</li>
                 </ul>
                 <div class="tech-badges">
-                    <span class="glass-panel">Selenium</span><span class="glass-panel">TestNG</span><span class="glass-panel">JIRA</span><span class="glass-panel">Cross-Browser</span>
+                    <span class="glass-panel">Selenium</span>
+                    <span class="glass-panel">TestNG</span>
+                    <span class="glass-panel">Compatibility Testing</span>
+                    <span class="glass-panel">JIRA Bug Tracking</span>
                 </div>
             </div>
 
-            <div class="timeline-item glass-panel" style="margin-top: 30px;">
+            <div class="timeline-item glass-panel">
                 <div class="timeline-header">
                     <h3>QA Engineer</h3>
                     <span class="timeline-date">Sleek Info Solutions Pvt. Ltd. | Jan 2020 - Oct 2021</span>
                 </div>
                 <ul>
-                    <li>Tested reporting and analytics platforms heavily integrated with Azure architectures and Power BI telemetry dashboards.</li>
-                    <li>Developed, refactored, and maintained Appium-based mobile automation scripts dedicated to Android devices.</li>
-                    <li>Expanded overall mobile regression suite coverage by 35% through strategic framework automation implementation.</li>
-                    <li>Conducted deep backend data validation and verification testing by constructing optimized SQL queries.</li>
+                    <li>Tested scalable data reporting and system analytics platforms integrated directly with Azure and Power BI dashboard streams.</li>
+                    <li>Developed and maintained functional Appium mobile automation scripts targeting diverse Android physical profiles.</li>
+                    <li>Boosted overall mobile regression execution coverage metrics by 35% via strict automated testing expansion.</li>
+                    <li>Managed sprint milestones, test documentation mapping, and structural defects via Azure Boards while writing targeted database validation SQL queries.</li>
                 </ul>
                 <div class="tech-badges">
-                    <span class="glass-panel">Appium</span><span class="glass-panel">Android Testing</span><span class="glass-panel">Azure Boards</span><span class="glass-panel">SQL</span>
+                    <span class="glass-panel">Appium Android</span>
+                    <span class="glass-panel">Azure Boards</span>
+                    <span class="glass-panel">Power BI Integration</span>
+                    <span class="glass-panel">SQL Testing</span>
                 </div>
             </div>
 
-            <div class="timeline-item glass-panel" style="margin-top: 30px;">
+            <div class="timeline-item glass-panel">
                 <div class="timeline-header">
                     <h3>QA Engineer</h3>
                     <span class="timeline-date">Sysalgo Technologies | Jun 2019 - Dec 2019</span>
                 </div>
                 <ul>
-                    <li>Executed rigorous Functional, Integration, System, and Regression testing cycles to protect software deployment quality.</li>
-                    <li>Created highly detailed test cases, maintained the Requirements Traceability Matrix (RTM), and drafted core QA documentation.</li>
-                    <li>Performed end-to-end defect tracking, triaging, and lifecycle management utilizing JIRA boards.</li>
+                    <li>Executed detailed Functional, Integration, System level, and Regression testing configurations.</li>
+                    <li>Created technical test cases, trace structures via Requirements Traceability Matrix (RTM), and standard QA logs.</li>
+                    <li>Handled issue mapping and defect lifecycle records using JIRA pipelines to achieve enhanced system test coverage rates.</li>
                 </ul>
                 <div class="tech-badges">
-                    <span class="glass-panel">Functional Testing</span><span class="glass-panel">RTM Docs</span><span class="glass-panel">JIRA</span>
+                    <span class="glass-panel">Functional Verification</span>
+                    <span class="glass-panel">RTM Mapping</span>
+                    <span class="glass-panel">Defect Lifecycle</span>
+                    <span class="glass-panel">System Testing</span>
                 </div>
             </div>
+
         </div>
     </section>
 
-    <section id="projects" class="projects-section">
+    <section id="projects">
         <div class="section-title">
-            <span>What I've Built</span>
-            <h2>Automation <span>Frameworks & Projects</span></h2>
+            <span>Project Ecosystems</span>
+            <h2>Enterprise Platform Blueprints</h2>
         </div>
-
         <div class="projects-grid">
             <div class="project-card glass-panel">
-                <div class="project-icon-row">
-                    <span class="project-icon">🌐</span>
-                    <span class="featured-badge glass-panel">CREST ERP Suite</span>
-                </div>
-                <h3>CREST Enterprise Resource Planning</h3>
-                <p>
-                    Designed and built a highly scalable Selenium WebDriver + Cucumber framework to handle critical end-to-end ERP transactional workflows across Sales, Finance, and Manufacturing modules. Integrated REST Assured to match data layer verification with front-end browser mutations.
-                </p>
-                <div class="project-tech">
-                    <span class="glass-panel">Selenium</span><span class="glass-panel">Java</span><span class="glass-panel">REST Assured</span><span class="glass-panel">Parallel TestNG</span>
-                </div>
+                <div class="project-icon-row"><span class="project-icon">🏭</span><span class="featured-badge glass-panel">Core System</span></div>
+                <h3>CREST ERP System</h3>
+                <p>Enterprise-grade ERP system covering Sales, Finance, CRM, HRMS, Manufacturing, Party, and Projects modules. Designed a scalable Selenium + Cucumber framework, integrated REST Assured API tests with UI workflows, and managed automated reporting pipelines via Jenkins.</p>
+                <div class="project-tech"><span class="glass-panel">Selenium</span><span class="glass-panel">REST Assured</span><span class="glass-panel">Jenkins CI/CD</span></div>
             </div>
-
             <div class="project-card glass-panel">
-                <div class="project-icon-row">
-                    <span class="project-icon">📱</span>
-                    <span class="featured-badge glass-panel">SFA Flutter Mobile</span>
-                </div>
-                <h3>Sales Force Automation Engine</h3>
-                <p>
-                    Developed comprehensive mobile automation architectures using <strong>Appium</strong> to test multi-platform (Android/iOS) setups. Effectively verified complex device states including offline/online synchronization, remote background API calls, and transaction accuracy.
-                </p>
-                <div class="project-tech">
-                    <span class="glass-panel">Appium</span><span class="glass-panel">Mobile Test</span><span class="glass-panel">Flutter QA</span><span class="glass-panel">Sync Validation</span>
-                </div>
+                <div class="project-icon-row"><span class="project-icon">📱</span><span class="featured-badge glass-panel">Mobile Architecture</span></div>
+                <h3>SFA (Sales Force Automation)</h3>
+                <p>A cross-platform Flutter mobile application serving enterprise Sales & Distribution streams across Android and iOS. Automated login matrices, order bookings, live inventory tracking, and payment gateways using Appium, while validating online/offline sync layers.</p>
+                <div class="project-tech"><span class="glass-panel">Appium Mobile</span><span class="glass-panel">Flutter QA</span><span class="glass-panel">Offline Sync</span></div>
             </div>
-
             <div class="project-card glass-panel">
-                <div class="project-icon-row">
-                    <span class="project-icon">🏥</span>
-                    <span class="featured-badge glass-panel">Accenture/TCS</span>
-                </div>
-                <h3>Pfizer Healthcare Portal</h3>
-                <p>
-                    Coordinated regression and release testing pipelines across multi-device arrangements utilizing <strong>BrowserStack</strong> infrastructure. Integrated deep boundary scenarios to boost defect detection density before user validation window handoffs.
-                </p>
-                <div class="project-tech">
-                    <span class="glass-panel">BrowserStack</span><span class="glass-panel">Regression</span><span class="glass-panel">Sanity Verifications</span>
-                </div>
+                <div class="project-icon-row"><span class="project-icon">🏥</span><span class="featured-badge glass-panel">Compliance Verified</span></div>
+                <h3>Pfizer Healthcare Application</h3>
+                <p>High-security healthcare web and mobile ecosystem built for cross-device execution. Managed strict functional validation, sanity workflows, regression runs on real configurations using Browser Stack, and synchronized resolution loops with development squads via JIRA.</p>
+                <div class="project-tech"><span class="glass-panel">Browser Stack</span><span class="glass-panel">Healthcare Domain</span><span class="glass-panel">Defect Triage</span></div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="contact-section">
+    <section id="education-achievements">
         <div class="section-title">
-            <span>Get In Touch</span>
-            <h2>Let's Connect <span>& Collaborate</span></h2>
+            <span>Credentials & Insights</span>
+            <h2>Education & Value Milestones</h2>
         </div>
+        <div class="projects-grid">
+            <div class="project-card glass-panel">
+                <h3>Key QA Engineering Achievements</h3>
+                <ul style="padding-left: 20px; font-size: 0.95rem; line-height: 1.8;">
+                    <li>Reduced regression suite execution time by 40% via CI/CD pipelines.</li>
+                    <li>Boosted framework automation stability metrics by 30% using self-healing engines.</li>
+                    <li>Successfully automated 80% of ERP critical business path workflows.</li>
+                    <li>Slashed manual validation workloads by 50% through framework coverage expansion.</li>
+                </ul>
+            </div>
+            <div class="project-card glass-panel">
+                <h3>Academic Foundation</h3>
+                <p style="margin-bottom: 10px; font-size: 1.1rem; color: var(--text-primary);"><strong>Bachelor of Technology (B.Tech)</strong></p>
+                <p style="font-size: 1rem; color: var(--accent);">Electrical Engineering</p>
+                <p style="font-size: 0.9rem; margin-top: 15px; opacity: 0.8;">Provides strong logical problem-solving foundations and algorithmic analytical training applied to complex automated program assertions.</p>
+            </div>
+        </div>
+    </section>
 
-        <div class="contact-container">
-            <div class="contact-info-card glass-panel">
-                <h3>Let's talk about Quality Engineering!</h3>
-                <p>I am open to new opportunities, framework design consultation, or talking shop about workflow pipeline efficiency. Drop me a line!</p>
-                <div class="contact-methods">
-                    <div class="method-item glass-panel">
-                        <span class="method-icon">✉️</span>
-                        <div>
-                            <strong>Email Me</strong>
-                            <a href="mailto:preetinanda09@gmail.com">preetinanda09@gmail.com</a>
-                        </div>
+    <section id="contact">
+        <div class="contact-section">
+            <div class="contact-container">
+                <div class="contact-info-card glass-panel">
+                    <h3>Let's Architect Quality Systems</h3>
+                    <p>Available for senior automation infrastructure roles, testing strategy optimization, and CI/CD development transformations.</p>
+                    <div class="contact-methods">
+                        <div class="method-item glass-panel"><span class="method-icon">✉️</span><div><strong>Email Address</strong><a href="mailto:preetinanda09@gmail.com">preetinanda09@gmail.com</a></div></div>
+                        <div class="method-item glass-panel"><span class="method-icon">💼</span><div><strong>LinkedIn Hub</strong><a href="https://linkedin.com/in/pritinanda09" target="_blank">linkedin.com/in/pritinanda09</a></div></div>
                     </div>
                 </div>
             </div>
+            <footer>&copy; 2026 Pritinanda Behera. All code paths verified green.</footer>
         </div>
-
-        <footer>
-            <p>&copy; 2026 Pritinanda Behera. Built with clean code & automation in mind.</p>
-        </footer>
     </section>
 
-    <button id="backToTop" title="Go to top">▲</button>
-
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="script.js"></script>
 </body>
 </html>
