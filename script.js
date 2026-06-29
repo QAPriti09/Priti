@@ -1,209 +1,181 @@
-/* =========================================
-   Sleek Mouse Pointer Backlighting Engine
-========================================= */
-window.addEventListener("mousemove", (e) => {
-    document.documentElement.style.setProperty("--mouse-x", `${e.clientX}px`);
-    document.documentElement.style.setProperty("--mouse-y", `${e.clientY}px`);
-});
+// =========================================
+// Dynamic Typing Effect (Hero Section)
+// =========================================
+document.addEventListener("DOMContentLoaded", function () {
+    if (document.getElementById("typing")) {
+        new Typed("#typing", {
+            strings: [
+                "Automation Architect",
+                "QA Automation Lead",
+                "Selenium & Appium Expert",
+                "API Validation Specialist"
+            ],
+            typeSpeed: 70,
+            backSpeed: 40,
+            backDelay: 2000,
+            loop: true
+        });
+    }
 
-/* =========================================
-   Interactive Persistent Theme Engine
-========================================= */
-const themeToggleBtn = document.getElementById("themeToggleBtn");
-const themeDropdown = document.getElementById("themeDropdown");
-
-if (themeToggleBtn && themeDropdown) {
-    themeToggleBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        themeDropdown.classList.toggle("open");
+    // Scroll Progress Bar Tracker
+    window.addEventListener("scroll", updateScrollProgress);
+    
+    // Back to Top Button Interaction
+    const backToTopBtn = document.getElementById("backToTop");
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+            backToTopBtn.classList.add("show");
+        } else {
+            backToTopBtn.classList.remove("show");
+        }
     });
 
+    backToTopBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Mobile Navigation Toggle
+    const mobileMenuToggle = document.getElementById("mobile-menu");
+    const navLinks = document.querySelector(".nav-links");
+    if (mobileMenuToggle) {
+        mobileMenuToggle.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+        });
+    }
+
+    // Close mobile menu when clicking nav links
+    document.querySelectorAll(".nav-links a").forEach(link => {
+        link.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+        });
+    });
+
+    // Theme Switcher Dropdown Interaction
+    const themeBtn = document.getElementById("themeBtn");
+    const themeDropdown = document.getElementById("themeDropdown");
+    if (themeBtn) {
+        themeBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            themeDropdown.classList.toggle("open");
+        });
+    }
+
+    // Close dropdown when clicking outside
     document.addEventListener("click", () => {
-        themeDropdown.classList.remove("open");
+        if (themeDropdown) themeDropdown.classList.remove("open");
     });
 
-    themeDropdown.querySelectorAll("button").forEach(button => {
-        button.addEventListener("click", () => {
-            const selectedTheme = button.getAttribute("data-theme");
+    // Apply selected theme
+    document.querySelectorAll(".theme-dropdown button").forEach(button => {
+        button.addEventListener("click", (e) => {
+            const selectedTheme = e.target.getAttribute("data-theme");
             document.documentElement.setAttribute("data-user-theme", selectedTheme);
-            localStorage.setItem("portfolio-theme", selectedTheme);
+            localStorage.setItem("preferred-theme", selectedTheme);
             themeDropdown.classList.remove("open");
         });
     });
 
-    const cachedTheme = localStorage.getItem("portfolio-theme");
-    if (cachedTheme) {
-        document.documentElement.setAttribute("data-user-theme", cachedTheme);
+    // Load saved theme on initialization
+    const savedTheme = localStorage.getItem("preferred-theme");
+    if (savedTheme) {
+        document.documentElement.setAttribute("data-user-theme", savedTheme);
     }
-}
 
-/* =========================================
-   Typed.js Multi-Subtitle Configuration
-========================================= */
-if (document.getElementById("typing")) {
-    new Typed("#typing", {
-        strings: [
-            "Pritinanda Behera.",
-            "a Senior QA Engineer at LanceSoft.",
-            "an Accenture Client Engineer.",
-            "a Selenium Automation Expert.",
-            "a REST Assured Framework Architect."
-        ],
-        typeSpeed: 60,
-        backSpeed: 40,
-        backDelay: 1600,
-        loop: true
-    });
-}
+    // Skills Category Filtering Mechanism
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const skillCards = document.querySelectorAll(".skill-card");
 
-/* =========================================
-   Mobile Drawer Navigation Transitions
-========================================= */
-const menuToggle = document.querySelector(".menu-toggle");
-const navLinks = document.querySelector(".nav-links");
-
-if (menuToggle && navLinks) {
-    menuToggle.addEventListener("click", () => {
-        const isExpanded = navLinks.classList.toggle("active");
-        menuToggle.setAttribute("aria-expanded", isExpanded);
-    });
-
-    document.querySelectorAll(".nav-links a").forEach(link => {
-        link.addEventListener("click", () => {
-            navLinks.classList.remove("active");
-            menuToggle.setAttribute("aria-expanded", "false");
+    filterButtons.forEach(button => {
+        button.addEventListener("click", (e) => {
+            filterButtons.forEach(btn => btn.classList.remove("active"));
+            e.target.classList.add("active");
+            
+            const filterValue = e.target.getAttribute("data-filter");
+            
+            skillCards.forEach(card => {
+                if (filterValue === "all" || card.getAttribute("data-category") === filterValue) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
         });
     });
-}
 
-/* =========================================
-   Interactive Skills Categorization Filter
-========================================= */
-const filterBtns = document.querySelectorAll(".filter-btn");
-const skillCards = document.querySelectorAll(".skill-card");
-
-filterBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-        document.querySelector(".filter-btn.active").classList.remove("active");
-        btn.classList.add("active");
-
-        const targetCat = btn.getAttribute("data-category");
-
-        skillCards.forEach(card => {
-            const cardCat = card.getAttribute("data-cat");
-            if (targetCat === "all" || cardCat === targetCat) {
-                card.style.display = "block";
-                card.style.animation = "fadeInUp 0.4s ease forwards";
-            } else {
-                card.style.display = "none";
-            }
-        });
-    });
+    // Interactive Telemetry Terminal Simulator
+    const runTestBtn = document.getElementById("runTestBtn");
+    if (runTestBtn) {
+        runTestBtn.addEventListener("click", runAutomationSimulation);
+    }
 });
 
-/* =========================================
-   ROLE-SPECIFIC SUITE: Test Automation Simulator
-========================================= */
-const runTestsBtn = document.getElementById("runTestsBtn");
-const terminalConsole = document.getElementById("terminalConsole");
-const metricPass = document.getElementById("metricPass");
-const metricFail = document.getElementById("metricFail");
-const metricStatus = document.getElementById("metricStatus");
+// =========================================
+// Scroll Percentage Tracking
+// =========================================
+function updateScrollProgress() {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    const progressBar = document.getElementById("progress");
+    if (progressBar) progressBar.style.width = scrolled + "%";
+}
 
-if (runTestsBtn) {
-    const simulationLogs = [
-        { text: "[INFO] Booting LanceSoft/Accenture integrated testing ecosystem matrix...", type: "system" },
-        { text: "[INFO] Parsing enterprise framework execution configurations via Maven...", type: "system" },
-        { text: "🚀 Threadpool dynamic allocation initialized. Spawning TestNG parallel executors...", type: "system" },
-        { text: "🌐 ACCENTURE INTEGRATION: Running thread verification routines...", type: "system" },
-        { text: "✔ TEST PASSED: accenture.global.core.verifyParallelRegressionPipeline() [Time: 1.1s]", type: "pass" },
-        { text: "✔ TEST PASSED: accenture.global.api.validateSecureOAuthToken() [Time: 0.7s]", type: "pass" },
-        { text: "🌐 HISTORICAL MODULE: Running CREST ERP transactional verification checks...", type: "system" },
-        { text: "✔ TEST PASSED: crest.erp.sales.verifyOrderBookingWorkflow() [Time: 1.4s]", type: "pass" },
-        { text: "🚀 Invoking REST Assured functional validation assertions...", type: "system" },
-        { text: "✔ TEST PASSED: GET /api/v1/erp/inventory - Status 200 [Schema Matching]", type: "pass" },
-        { text: "📱 MOBILE MODULE: SFA Flutter Engine framework launching context components...", type: "system" },
-        { text: "✔ TEST PASSED: sfa.mobile.sync.validateOfflineDataSynchronization()", type: "pass" },
-        { text: "[INFO] Merging framework metrics into global Allure Dashboard compilation streams...", type: "system" },
-        { text: "📊 RESULT: 5 Scenarios executed. 0 Failures. Core Enterprise Build SUCCESS.", type: "pass" }
+// =========================================
+// Dynamic Glowing Mouse Background Tracker
+// =========================================
+document.addEventListener("mousemove", (e) => {
+    const glowBg = document.getElementById("glow-bg");
+    if (glowBg) {
+        glowBg.style.setProperty("--mouse-x", e.clientX + "px");
+        glowBg.style.setProperty("--mouse-y", e.clientY + "px");
+    }
+});
+
+// =========================================
+// Terminal Simulation Logic
+// =========================================
+function runAutomationSimulation() {
+    const consoleBody = document.getElementById("consoleBody");
+    const suiteStatus = document.getElementById("suiteStatus");
+    const successRate = document.getElementById("successRate");
+    
+    if (!consoleBody || !suiteStatus || !successRate) return;
+
+    // Reset UI Indicators
+    consoleBody.innerHTML = "";
+    suiteStatus.innerText = "RUNNING";
+    suiteStatus.style.color = "#ffbd2e";
+    successRate.innerText = "--";
+
+    const logs = [
+        { text: "[RUNNING] Invoking Automation Suite via Maven Profiles...", type: "system-line" },
+        { text: "[INFO] Initializing Selenium WebDriver configurations...", type: "system-line" },
+        { text: "[INFO] Establishing REST Assured token-based authentication...", type: "system-line" },
+        { text: "[PASSED] WebUI Verification: Login Functionality (TestNG)", type: "pass-line" },
+        { text: "[PASSED] WebUI Verification: ERP Dashboard Load Time", type: "pass-line" },
+        { text: "[INFO] Running Appium cross-device mobile execution...", type: "system-line" },
+        { text: "[PASSED] Mobile Native Action: Inventory Sync Validation", type: "pass-line" },
+        { text: "[PASSED] API Assertions: Microservices Transaction Validation", type: "pass-line" },
+        { text: "[INFO] Generating automated cucumber HTML reports...", type: "system-line" },
+        { text: "[SUCCESS] Execution suite completed successfully. Zero defects logged.", type: "pass-line" }
     ];
 
-    runTestsBtn.addEventListener("click", () => {
-        runTestsBtn.disabled = true;
-        terminalConsole.innerHTML = "";
-        metricPass.innerText = "0";
-        metricFail.innerText = "0";
-        metricStatus.innerText = "RUNNING";
-        metricStatus.style.color = "#ff7a00";
+    let delay = 0;
+    logs.forEach((log, index) => {
+        setTimeout(() => {
+            const p = document.createElement("p");
+            p.className = log.type;
+            p.innerText = log.text;
+            consoleBody.appendChild(p);
+            consoleBody.scrollTop = consoleBody.scrollHeight; // Auto-scroll terminal
 
-        let currentLine = 0;
-        
-        function printNextLog() {
-            if (currentLine < simulationLogs.length) {
-                const log = simulationLogs[currentLine];
-                const p = document.createElement("p");
-                p.className = log.type === "system" ? "system-line" : log.type === "pass" ? "pass-line" : "err-line";
-                p.textContent = log.text;
-                terminalConsole.appendChild(p);
-                terminalConsole.scrollTop = terminalConsole.scrollHeight;
-
-                if (log.text.includes("TEST PASSED")) {
-                    const currentPasses = parseInt(metricPass.innerText);
-                    metricPass.innerText = currentPasses + 1;
-                }
-
-                currentLine++;
-                setTimeout(printNextLog, 400);
-            } else {
-                metricStatus.innerText = "SUCCESS";
-                metricStatus.style.color = "#2ea44f";
-                runTestsBtn.disabled = false;
-                runTestsBtn.innerHTML = "🔄 Re-run Suite Diagnostics";
+            // Update header metrics on completion
+            if (index === logs.length - 1) {
+                suiteStatus.innerText = "PASSED";
+                suiteStatus.style.color = "#27c93f";
+                successRate.innerText = "100%";
             }
-        }
-        setTimeout(printNextLog, 200);
-    });
-}
-
-/* =========================================
-   Global Viewport Scroll Listeners
-========================================= */
-const backToTopBtn = document.getElementById("backToTop");
-const navbar = document.querySelector(".navbar");
-const sections = document.querySelectorAll("section");
-const navItems = document.querySelectorAll(".nav-links a");
-
-window.addEventListener("scroll", () => {
-    const scrollTop = document.documentElement.scrollTop || window.pageYOffset;
-    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    
-    const scrollPercent = (scrollTop / scrollHeight) * 100;
-    const progress = document.getElementById("progress");
-    if (progress) progress.style.width = scrollPercent + "%";
-
-    if (scrollTop > 300) backToTopBtn.classList.add("show");
-    else backToTopBtn.classList.remove("show");
-
-    if (scrollTop > 50) {
-        navbar.style.boxShadow = "0 10px 30px rgba(0, 0, 0, 0.3)";
-    } else {
-        navbar.style.boxShadow = "none";
-    }
-
-    let current = "";
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 120;
-        if (scrollTop >= sectionTop) current = section.getAttribute("id");
-    });
-
-    navItems.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === "#" + current) link.classList.add("active");
-    });
-});
-
-if (backToTopBtn) {
-    backToTopBtn.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        }, delay);
+        delay += 600; // Interval delay between log entries
     });
 }
