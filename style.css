@@ -1,0 +1,419 @@
+/* =========================================
+   Theme Palettes Ecosystem & Variables Matrix
+========================================= */
+:root, [data-user-theme="dark"] {
+    --bg-main: #0d1117;
+    --glass-bg: rgba(22, 27, 34, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --border-color: #21262d;
+    --accent: #ff7a00;
+    --text-primary: #ffffff;
+    --text-secondary: #c9d1d9;
+    --terminal-bg: rgba(5, 8, 12, 0.85);
+    --glow-color: rgba(255, 122, 0, 0.05);
+    --shadow: rgba(0, 0, 0, 0.4);
+}
+
+[data-user-theme="light"] {
+    --bg-main: #f4f6f8;
+    --glass-bg: rgba(255, 255, 255, 0.75);
+    --glass-border: rgba(0, 0, 0, 0.08);
+    --border-color: #d0d7de;
+    --accent: #d06200;
+    --text-primary: #24292f;
+    --text-secondary: #57606a;
+    --terminal-bg: #090d13;
+    --glow-color: rgba(208, 98, 0, 0.03);
+    --shadow: rgba(140, 149, 159, 0.15);
+}
+
+[data-user-theme="cyberpunk"] {
+    --bg-main: #06000c;
+    --glass-bg: rgba(18, 0, 36, 0.6);
+    --glass-border: rgba(188, 0, 221, 0.4);
+    --border-color: #bc00dd;
+    --accent: #00f0ff;
+    --text-primary: #00ff66;
+    --text-secondary: #dfbaff;
+    --terminal-bg: rgba(2, 0, 5, 0.9);
+    --glow-color: rgba(0, 240, 255, 0.08);
+    --shadow: rgba(188, 0, 221, 0.2);
+}
+
+/* =========================================
+   Global Reset & Base Setup
+========================================= */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-secondary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+span { color: var(--accent); }
+
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px 0 var(--shadow);
+}
+
+#glow-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(600px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), var(--glow-color), transparent 80%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+#progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: var(--accent);
+    width: 0%;
+    z-index: 2000;
+    transition: width 0.1s ease-out;
+}
+
+section { padding: 100px 8% 60px; position: relative; z-index: 2; }
+.section-title { margin-bottom: 40px; }
+.section-title span { font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; }
+.section-title h2 { font-size: 2.2rem; color: var(--text-primary); margin-top: 5px; }
+
+/* =========================================
+   Navbar Layout Matrix
+========================================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    position: fixed;
+    top: 0; 
+    width: 100%; 
+    z-index: 1000;
+    border-top: none; border-left: none; border-right: none;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+.nav-links { 
+    display: flex; 
+    list-style: none; 
+    gap: 35px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nav-links a { text-decoration: none; color: var(--text-secondary); font-weight: 500; transition: 0.3s; }
+.nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+.nav-controls-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.btn-hire { background: var(--accent); color: #ffffff !important; padding: 8px 18px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: opacity 0.2s; }
+.btn-hire:hover { opacity: 0.9; }
+
+.menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.menu-toggle span { display: block; width: 25px; height: 3px; background-color: var(--text-primary); transition: 0.3s; }
+
+.theme-switch-container { position: relative; }
+.theme-btn { background: transparent; border: 1px solid var(--border-color); color: var(--text-primary); padding: 6px 14px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: 0.2s; }
+.theme-btn:hover { border-color: var(--accent); }
+.theme-dropdown { display: none; position: absolute; top: 120%; right: 0; border-radius: 8px; padding: 6px; min-width: 140px; z-index: 1100; }
+.theme-dropdown.open { display: flex; flex-direction: column; gap: 4px; }
+.theme-dropdown button { background: transparent; border: none; color: var(--text-secondary); padding: 8px 12px; text-align: left; width: 100%; font-size: 0.85rem; font-weight: 500; border-radius: 4px; cursor: pointer; transition: 0.2s; }
+.theme-dropdown button:hover { background: rgba(255, 122, 0, 0.1); color: var(--accent); }
+
+/* =========================================
+   Hero Section Structural Lock (No Layout Shifts)
+========================================= */
+.hero { 
+    display: grid; 
+    grid-template-columns: 55% 45%; 
+    align-items: center; 
+    min-height: 90vh; 
+    gap: 40px;
+}
+
+.hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main-headline-container {
+    margin: 15px 0 25px 0;
+    position: relative;
+    height: 160px; /* Reserves standard vertical space for multiline changes */
+}
+
+.static-hi {
+    font-size: 3.5rem; 
+    color: var(--text-primary); 
+    line-height: 1;
+    margin: 0;
+}
+
+/* Absolute overlay decouples inline word expansions from column scaling metrics */
+.typing-wrapper {
+    position: absolute;
+    top: 60px; 
+    left: 0;
+    width: 100%;
+}
+
+#typing { 
+    font-size: 3.2rem;
+    font-weight: 800;
+    color: var(--accent); 
+    line-height: 1.2;
+    display: inline-block;
+}
+
+.status-badge { display: inline-block; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; color: var(--text-primary); margin-bottom: 10px; }
+.tagline { font-size: 1.15rem; max-width: 600px; color: var(--text-secondary); }
+.hero-stats { display: flex; gap: 20px; margin-top: 40px; }
+.stat-box { padding: 15px 25px; border-radius: 8px; text-align: center; font-size: 0.95rem; }
+.stat-box span { display: block; font-size: 1.5rem; font-weight: 700; }
+
+/* =========================================
+   Profile Image Framework Locking Fix
+========================================= */
+/* =========================================
+   Profile Image Frame - Morphing + Locked Fix
+========================================= */
+.hero-image { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    width: 100%;
+}
+
+/* Hardcoded fixed boundaries + complex morphing animation loop */
+.image-frame-wrapper {
+    flex-shrink: 0;
+    position: relative;
+    width: 320px;          /* Locked absolute width */
+    height: 320px;         /* Locked absolute height */
+    aspect-ratio: 1 / 1;   /* Strict square ratio */
+    
+    background: linear-gradient(45deg, var(--accent), var(--border-color));
+    padding: 4px;
+    box-shadow: 0 15px 35px var(--shadow);
+    overflow: hidden;
+    
+    /* Re-attaching the morphing shape + float combination loop */
+    animation: morphingGlowFloat 8s ease-in-out infinite;
+    transition: transform 0.3s ease;
+}
+
+.image-frame-wrapper:hover { 
+    transform: scale(1.03) rotate(1deg); 
+}
+
+.image-frame-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: var(--bg-main);
+    /* Image shape matches the wrapper morph tracking exactly */
+    animation: morphingGlowFloat 8s ease-in-out infinite;
+}
+
+/* The fluid morphing sequence you liked, safely isolated within fixed dimensions */
+@keyframes morphingGlowFloat {
+    0% { 
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; 
+        transform: translateY(0px); 
+    }
+    50% { 
+        border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; 
+        transform: translateY(-12px); 
+    }
+    100% { 
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; 
+        transform: translateY(0px); 
+    }
+}
+
+/* Mobile viewport structural constraint */
+@media (max-width: 768px) {
+    .image-frame-wrapper {
+        width: 260px;   
+        height: 260px;
+    }
+}
+
+/* =========================================
+   Skills Elements Matrix
+========================================= */
+.skills-filter { display: flex; justify-content: center; gap: 15px; margin-bottom: 35px; flex-wrap: wrap; }
+.filter-btn { color: var(--text-secondary); border: 1px solid var(--glass-border); padding: 8px 18px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.3s ease; }
+.filter-btn:hover, .filter-btn.active { background: var(--accent); color: #ffffff; border-color: var(--accent); box-shadow: 0 0 15px rgba(255, 122, 0, 0.3); }
+
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+.skill-card { padding: 30px; border-radius: 12px; transition: transform 0.3s; }
+.skill-card:hover { transform: translateY(-3px); }
+.skill-card h3 { color: var(--text-primary); margin-bottom: 10px; font-size: 1.25rem; }
+.skill-card p { font-size: 0.95rem; margin-bottom: 20px; min-height: 48px; }
+.progress-wrapper { margin-top: 15px; }
+.progress-info { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 5px; font-weight: 600; }
+.progress-bar { background: rgba(0,0,0,0.15); height: 6px; border-radius: 10px; overflow: hidden; }
+.progress-fill { background: var(--accent); height: 100%; border-radius: 10px; transition: width 1s cubic-bezier(0.4, 0, 0.2, 1); }
+
+/* =========================================
+   Interactive Telemetry Console Sandbox
+========================================= */
+.terminal-container { border-radius: 12px; overflow: hidden; max-width: 800px; margin: 0 auto; }
+.terminal-header { background: rgba(0, 0, 0, 0.15); padding: 12px 20px; display: flex; align-items: center; border-bottom: 1px solid var(--glass-border); }
+.terminal-dots { display: flex; gap: 8px; margin-right: 15px; }
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.dot.red { background: #ff5f56; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #27c93f; }
+.terminal-title { font-family: monospace; font-size: 0.85rem; color: var(--text-secondary); opacity: 0.8; }
+.terminal-body { padding: 25px; font-family: 'Courier New', Courier, monospace; font-size: 0.9rem; height: 250px; overflow-y: auto; color: #72f1b8; background: var(--terminal-bg) !important; text-align: left; }
+.terminal-body p { margin-bottom: 8px; line-height: 1.4; }
+.terminal-body .system-line { color: var(--text-secondary); opacity: 0.7; }
+.terminal-body .pass-line { color: #58a6ff; }
+.terminal-body .err-line { color: #f85149; }
+.terminal-footer { background: rgba(0,0,0,0.1); padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; border-top: 1px solid var(--glass-border); }
+.btn-terminal { background: transparent; color: var(--accent); border: 1px solid var(--accent); padding: 10px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+.btn-terminal:hover { background: var(--accent); color: #ffffff; box-shadow: 0 0 15px rgba(255, 122, 0, 0.4); }
+.live-metrics { font-family: monospace; font-size: 0.9rem; display: flex; gap: 20px; }
+
+/* =========================================
+   Work Experience Career Engine
+========================================= */
+.timeline-item { padding: 30px; border-radius: 12px; border-left: 3px solid var(--accent); text-align: left; }
+.timeline-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px; }
+.timeline-header h3 { color: var(--text-primary); font-size: 1.4rem; }
+.timeline-date { color: var(--accent); font-weight: 600; font-size: 0.95rem; }
+.timeline-item ul { padding-left: 20px; margin-bottom: 25px; }
+.timeline-item li { margin-bottom: 10px; font-size: 1rem; }
+.tech-badges { display: flex; flex-wrap: wrap; gap: 10px; }
+.tech-badges span { padding: 4px 12px; border-radius: 4px; font-size: 0.8rem; }
+
+/* =========================================
+   Framework Projects Matrix
+========================================= */
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+.project-card { padding: 30px; border-radius: 12px; transition: transform 0.3s, border-color 0.3s; display: flex; flex-direction: column; text-align: left; }
+.project-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+.project-icon-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.project-icon { font-size: 1.8rem; }
+.featured-badge { color: var(--accent); font-size: 0.75rem; font-weight: 600; padding: 4px 10px; border-radius: 20px; }
+.project-card h3 { color: var(--text-primary); font-size: 1.35rem; margin-bottom: 12px; }
+.project-card p { font-size: 0.95rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 25px; flex-grow: 1; }
+.project-tech { display: flex; flex-wrap: wrap; gap: 8px; }
+.project-tech span { padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; }
+
+/* =========================================
+   Contact Form Infrastructure & Footer
+========================================= */
+.contact-section { padding: 60px 8% 20px; background: linear-gradient(180deg, var(--bg-main) 0%, rgba(0,0,0,0.2) 100%); }
+.contact-container { max-width: 600px; margin: 0 auto; }
+.contact-info-card { padding: 40px; border-radius: 16px; text-align: center; }
+.contact-info-card h3 { color: var(--text-primary); font-size: 1.5rem; margin-bottom: 15px; }
+.contact-info-card p { color: var(--text-secondary); font-size: 1rem; margin-bottom: 30px; }
+.contact-methods { display: flex; flex-direction: column; gap: 20px; align-items: center; margin-bottom: 35px; }
+.method-item { display: flex; align-items: center; gap: 15px; text-align: left; width: 100%; max-width: 350px; padding: 15px 20px; border-radius: 8px; }
+.method-icon { font-size: 1.5rem; }
+.method-item strong { display: block; color: var(--text-primary); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+.method-item a { color: var(--accent); text-decoration: none; font-weight: 500; }
+footer { margin-top: 80px; border-top: 1px solid var(--border-color); padding-top: 20px; text-align: center; font-size: 0.85rem; color: var(--text-secondary); opacity: 0.5; }
+
+/* =========================================
+   Utility Control Components
+========================================= */
+#backToTop {
+    position: fixed;
+    bottom: 30px; right: -60px;
+    width: 45px; height: 45px;
+    background: var(--accent);
+    color: #ffffff;
+    border: none; border-radius: 50%;
+    font-size: 1.1rem; cursor: pointer; z-index: 1500;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.3s ease;
+}
+#backToTop.show { right: 30px; }
+#backToTop:hover { transform: translateY(-5px) scale(1.05); }
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   Responsive Grid Adaptations Matrix
+========================================= */
+@media (max-width: 768px) {
+    .menu-toggle { display: flex; order: 1; }
+    .logo { order: 2; }
+    .nav-controls-right { order: 3; gap: 12px; }
+    
+    .nav-links {
+        display: none; 
+        flex-direction: column; 
+        position: absolute; 
+        top: 75px; 
+        left: 0; 
+        width: 100%;
+        padding: 20px; 
+        gap: 15px; 
+        text-align: center; 
+        border-left: none; border-right: none;
+        background: var(--glass-bg);
+        backdrop-filter: blur(12px);
+    }
+    .nav-links.active { display: flex; }
+    
+    .hero { 
+        grid-template-columns: 1fr; 
+        text-align: center; 
+        padding-top: 140px; 
+    }
+    .hero-stats { justify-content: center; flex-wrap: wrap; }
+    .hero-image { order: -1; margin-bottom: 40px; }
+    
+    .image-frame-wrapper {
+        width: 260px;   
+        height: 260px;
+    }
+    
+    .typing-wrapper {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+    }
+    .main-headline-container {
+        height: 140px;
+    }
+    .static-hi { font-size: 2.8rem; }
+    #typing { font-size: 2.4rem; }
+}
